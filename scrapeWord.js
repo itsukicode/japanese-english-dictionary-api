@@ -10,26 +10,26 @@ async function scrapeWord(word) {
 		// Wait until the page appears in the DOM
 		await page.waitForSelector('[data-dobid="dfn"] span', { timeout: 3000 })
 		// Get Word Pronunciation
-		const [wordPronounceEl] = await page.$x(
+		const [pronounceEl] = await page.$x(
 			'/html/body/div[7]/div/div[8]/div[1]/div/div[2]/div[2]/div/div/div[1]/div/div/div/div/div/div/div/span/div/div/div[1]/div/div[2]/div[1]/div/span'
 		)
-		let wordPronounce = await wordPronounceEl.getProperty('textContent')
-		wordPronounce = await wordPronounce.jsonValue()
-		// Get Word Sound
-		const [wordSoundEl] = await page.$x(
+		let pronounce = await pronounceEl.getProperty('textContent')
+		pronounce = await pronounce.jsonValue()
+		// Get Word Audio Src
+		const [audioSrcEl] = await page.$x(
 			'/html/body/div[7]/div/div[8]/div[1]/div/div[2]/div[2]/div/div/div[1]/div/div/div/div/div/div/div/span/div/div/div[1]/div/div[1]/div/audio/source'
 		)
-		let wordSound = await wordSoundEl.getProperty('src')
-		wordSound = await wordSound.jsonValue()
+		let audioSrc = await audioSrcEl.getProperty('src')
+		audioSrc = await audioSrc.jsonValue()
 		// // Get Word Definition
-		const [wordDefEl] = await page.$x(
+		const [defEl] = await page.$x(
 			'/html/body/div[7]/div/div[8]/div[1]/div/div[2]/div[2]/div/div/div[1]/div/div/div/div/div/div/div/span/div/div/div[1]/div/div[4]/div/div/ol/li/div/div/div[1]/div/div/div[1]/span'
 		)
-		let wordDef = await wordDefEl.getProperty('textContent')
-		wordDef = await wordDef.jsonValue()
-		return { wordPronounce, wordSound, wordDef }
+		let def = await defEl.getProperty('textContent')
+		def = await def.jsonValue()
+		return { pronounce, audioSrc, def }
 	} catch (err) {
-		console.log(err.message)
+		throw new Error(err.message)
 	} finally {
 		// Close Browser
 		await browser.close()

@@ -8,9 +8,16 @@ app.use(express.json())
 app.listen(PORT, () => console.log(`it's alive on http://localhost:${PORT}`))
 
 app.get('/search-word', async (req, res) => {
-	const word = req.query.word
-	const wordInfo = await scrapeWord(word)
-	// console.log('wordInfo:', wordInfo)
-	// res.status(200).send({
-	// })
+	const searchWord = req.query.word
+	try {
+		const word = await scrapeWord(searchWord)
+		console.log('wordInfo:', word)
+		res.status(200).send({
+			word
+		})
+	} catch (e) {
+		res.status(404).send({
+			message: 'Sorry there is not such a word in our database'
+		})
+	}
 })

@@ -2,6 +2,12 @@ const functions = require('firebase-functions')
 const express = require('express')
 const app = express()
 const scrapeWord = require('./scrapeWord')
+const cors = require('cors')
+app.use(
+	cors({
+		origin: '*'
+	})
+)
 
 app.get('/search-word', async (req, res) => {
 	const searchWord = req.query.word

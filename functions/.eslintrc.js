@@ -6,7 +6,7 @@ module.exports = {
 	},
 	'extends': ['eslint:recommended', 'google'],
 	'rules': {
-		'quotes': ['error', 'single'],
+		'quotes': [2, 'single', {'avoidEscape': true}],
 		'indent': [2, 'tab'],
 		'semi': ['error', 'never'],
 		'no-tabs': 0,

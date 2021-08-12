@@ -80,10 +80,13 @@ async function enToJp(word) {
 		await page.goto(`https://www.google.com/search?q=${word}+意味`, {
 			waitUntil: 'domcontentloaded'
 		})
-		// Get Word Pronunciation
-		const pronounce = await page.$eval('.Y2IQFc', (el) => el.textContent)
-		// Get Word Definition In Japanese
-		const def = await page.$eval('.hrcAhc', (el) => el.textContent)
+		// Get Word Pronunciation and Def
+		const pronounceAndDef = await page.$$eval('.Y2IQFc', (el) => {
+			return el.map((e) => e.textContent)
+		})
+		console.log('pronounceAndDef:', pronounceAndDef)
+		const pronounce = pronounceAndDef[1]
+		const def = pronounceAndDef[2]
 		await page.goto(`https://www.google.com/search?q=${word}+definition`, {
 			waitUntil: 'domcontentloaded'
 		})

@@ -16,7 +16,7 @@ app.get('/search-word', async (req, res) => {
 	try {
 		let word = null
 		if (lang === 'jp') {
-			word = await scrapeWord.jp(searchWord)
+			word = await scrapeWord.jpToEn(searchWord)
 		} else if (lang === 'en') {
 			word = await scrapeWord.enToJp(searchWord)
 		} else {

@@ -8,8 +8,6 @@ This API will receive a single Japanese or English word from the user and send b
 
 `GET /search-word?lang={lang}&word={keyword}`
 
-    https://us-central1-dictionary-api-b3e3e.cloudfunctions.net/app/search-word?lang={lang}&word={keyword}
-
 ### URL Parameter (Required)
 
 - lang - word search in a different language
@@ -32,7 +30,9 @@ This API will receive a single Japanese or English word from the user and send b
 
 1. Search Japanese Word
 
-`https://us-central1-dictionary-api-b3e3e.cloudfunctions.net/app/search-word?lang=jp&word=恋愛`
+```
+https://us-central1-dictionary-api-b3e3e.cloudfunctions.net/app/search-word?lang=jp&word=恋愛
+```
 
 ```
 {
@@ -47,7 +47,9 @@ This API will receive a single Japanese or English word from the user and send b
 
 2. Search English Word
 
-`https://us-central1-dictionary-api-b3e3e.cloudfunctions.net/app/search-word?lang=en&word=love `
+```
+https://us-central1-dictionary-api-b3e3e.cloudfunctions.net/app/search-word?lang=en&word=love
+```
 
 ```
 {
@@ -62,7 +64,9 @@ This API will receive a single Japanese or English word from the user and send b
 
 3. Search Japanese Word and Return the data in English
 
-`https://us-central1-dictionary-api-b3e3e.cloudfunctions.net/app/search-word?lang=jp&word=恋愛&returnLang=en`
+```
+https://us-central1-dictionary-api-b3e3e.cloudfunctions.net/app/search-word?lang=jp&word=恋愛&returnLang=en
+```
 
 ```
 {
@@ -77,7 +81,9 @@ This API will receive a single Japanese or English word from the user and send b
 
 4. Search English Word and Return the data in English
 
-`https://us-central1-dictionary-api-b3e3e.cloudfunctions.net/app/search-word?lang=en&word=love&returnLang=en`
+```
+https://us-central1-dictionary-api-b3e3e.cloudfunctions.net/app/search-word?lang=en&word=love&returnLang=en`
+```
 
 ```
 {
